@@ -4,7 +4,7 @@ import requests
 
 def get_info():
     data = requests.get('https://jsonplaceholder.typicode.com/todos/1').json()
-    data_local = requests.get("http://backend:8080/info")
+    data_local = requests.get("http://backend:8080/info").json()
     return data, data_local
 
 
