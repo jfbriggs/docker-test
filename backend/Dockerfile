@@ -1,7 +1,14 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+FROM python:3.7
 
-COPY ./requirements.txt requirements.txt
+WORKDIR /app
 
-RUN pip3 install -r requirements.txt
+RUN apt-get update
 
-COPY ./app /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["python", "main.py"]
