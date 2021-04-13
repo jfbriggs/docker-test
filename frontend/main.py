@@ -4,7 +4,8 @@ import requests
 
 def get_info():
     data = requests.get('https://jsonplaceholder.typicode.com/todos/1').json()
-    return data
+    data_local = requests.get("http://backend/info")
+    return data, data_local
 
 
 def main():
@@ -12,9 +13,13 @@ def main():
 
     st.subheader("Also a test.")
 
-    data = get_info()
+    data, local_data = get_info()
 
     st.write(data)
+
+    st.write(local_data)
+
+    st.write("Hi there person!")
 
     st.balloons()
 
